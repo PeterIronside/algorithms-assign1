@@ -32,7 +32,6 @@ public class ConnectedComponentImage {
 		a.getPicture().show();
 		a.binaryComponentImage().show();
 		a.colourComponentImage().show();
-		a.identifyComonentImage().show();
 		System.out.println(a.countComponents() + " components");
 	}
 
@@ -182,69 +181,7 @@ public class ConnectedComponentImage {
 	 * @return a picture object with all components surrounded by a red box
 	 */
 	public Picture identifyComonentImage() {
-		Picture pic = new Picture(picture); //Make a copy of the picture
-
-		HashMap<Integer, ArrayList<Integer>> minAndMaxs = new HashMap<Integer, ArrayList<Integer>>();
-		Iterator<Integer> goThroughComponents = identifiedComponents.iterator();
-		while (goThroughComponents.hasNext()) {
-			int component = goThroughComponents.next();
-			
-			ArrayList<Integer> minAndMax = new ArrayList<Integer>();
-
-			minAndMax.add(0); // maxX - index position 0
-			minAndMax.add(width); // minX - index 1
-			minAndMax.add(0); // maxY - index 2
-			minAndMax.add(height); // minY - index 3
-
-			minAndMaxs.put(component, minAndMax);
-		}
-
-		
-		for (int x = 0; x < width; x++) {
-			for (int y = 0; y < height; y++) {
-				if (labeledPic[x][y] != 0) {
-					int labelOfPixel = labeledPic[x][y];
-					
-					ArrayList<Integer> minAndMax = minAndMaxs.get(labelOfPixel);
-					if (x > minAndMax.get(0))
-						minAndMax.set(0, x);
-					if (x < minAndMax.get(1))
-						minAndMax.set(1, x);
-					if (y > minAndMax.get(2))
-						minAndMax.set(2, y);
-					if (y < minAndMax.get(3))
-						minAndMax.set(3, y);
-				}
-			}
-		}
-
-		
-		//Drawing step
-		Iterator<ArrayList<Integer>> goThroughMinAndMaxs = minAndMaxs.values().iterator();
-		while (goThroughMinAndMaxs.hasNext()) {
-			ArrayList<Integer> minAndMax = goThroughMinAndMaxs.next();
-
-			int maxX = minAndMax.get(0);
-			int minX = minAndMax.get(1);
-			int maxY = minAndMax.get(2);
-			int minY = minAndMax.get(3);
-
-			if (minX > maxX || minY > maxY) {
-				System.out.println("No components!!!");
-			} else {
-				for (int m = minX; m <= maxX; m++) {
-					pic.set(m, minY, Color.RED);
-					pic.set(m, maxY, Color.RED);
-				}
-
-				for (int n = minY; n <= maxY; n++) {
-					pic.set(minX, n, Color.RED);
-					pic.set(maxX, n, Color.RED);
-				}
-			}
-		}
-		return pic;
-
+	return null;
 	}
 
 	/**
