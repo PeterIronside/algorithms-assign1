@@ -11,9 +11,12 @@ import java.util.Random;
 import java.util.Set;
 
 /*************************************************************************
+ * This class will use a union find algorithm on an image.
+ * It will return the amount of components
+ * A binarized version of the image.
+ * The Image with random colors .
  * 
- * 
- * @author
+ * @author Peter Ironside
  *************************************************************************/
 public class ConnectedComponentImage {
 
